@@ -1,0 +1,32 @@
+{
+  "name": "bing_daily_wallpaper",
+  "version": "0.0.1",
+  "description": "Fetch the daily wallpaper from Bing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AHarmlessPyro/BingWallpaperFetch.git"
+  },
+  "keywords": [
+    "Wallpaper",
+    "daily",
+    "Bing"
+  ],
+  "author": "Ninad Sinha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AHarmlessPyro/BingWallpaperFetch/issues"
+  },
+  "homepage": "https://github.com/AHarmlessPyro/BingWallpaperFetch#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "electron": "^6.0.4",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
+    "sqlite3": "^4.1.0"
+  }
+}

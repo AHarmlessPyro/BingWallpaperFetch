@@ -1,0 +1,7 @@
+python implim/
+src/node_modules/
+src/js/bootstrap.*
+src/css/bootstrap.*
+src/css/bootstrap-grid.*
+src/css/bootstrap-reboot.*
+src/db/
