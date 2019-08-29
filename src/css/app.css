@@ -1,5 +1,4 @@
-#sidePanel {
-    /*background-color: yellow;*/
+#sidePanel {    
     min-height: 100px;
     overflow-y: scroll;
     max-height: -webkit-fill-available;
@@ -22,17 +21,15 @@
 
 .previewImageContainer {
     height: 200px;
-    /*margin-bottom: 16px;
-    margin-top: 16px;*/
     transition: 0.25s;
     --normal: rgba(#fff, 0);
     --hover: #abcdef;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .previewImageContainer:hover {
-    /*animation: cubic-bezier(0.075, 0.82, 0.165, 1);
-    box-shadow: -1px 1px #77aaff, -2px 2px #77aaff, -3px 3px #77aaff, -4px 4px #77aaff, -5px 5px #77aaff;*/
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.25em);
 }
@@ -42,21 +39,10 @@
     height: 100%
 }
 
-/*
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-  
-}
-*/
-
-/* Tooltip text */
-
 .previewImageContainer .tooltiptext {
     visibility: hidden;
     max-width: 75%;
-    background-color: black;
+    background-color: rgba(171,205,239, 0.3);
     color: #fff;
     text-align: center;
     padding: 5px 0;
@@ -68,7 +54,7 @@
 
 .tooltip-bottom {
     bottom: -10%;
-    left: 50%;
+    /*left: 50%;*/
     display: inline-block;
 }
 

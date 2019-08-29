@@ -1,50 +1,59 @@
 const { ipcRenderer } = require('electron');
+const { URLBASE, IMAGE_COUNT, IMAGE_TO_SKIP, MARKET, IMGBASE } = require('./js/constants')
 
+const listOfImages = [];
 
 ipcRenderer.on('runFetchFunction', () => {
 
-    console.log(document.getElementById('sidePanel'));
-    try {
-        var req = new XMLHttpRequest();
+    const START_DATE = 40;
 
-        var panel = document.getElementById('sidePanel');
+    const END_DATE = 10;
+
+    const MARKET_TO_USE = 'en-US'
+
+    let request_url = `${URLBASE}&${IMAGE_COUNT}${END_DATE}&${IMAGE_TO_SKIP}${START_DATE}&${MARKET}${MARKET_TO_USE}`;
+
+    console.log(request_url);
+
+    try {
+        let req = new XMLHttpRequest();
 
         req.addEventListener('load', () => {
-            console.log(req);
             JSON.parse(req.response).images.forEach(element => serveImage(element));
         })
-        req.open('POST', 'https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=5&mkt=en-US', true);
+        req.open('POST', request_url, true);
         req.send();
     } catch (error) {
         console.error(error);
     }
 
-
-
 })
 
 function serveImage(dat) {
-    console.log(dat);
 
-    document.getElementById('sidePanel').insertAdjacentHTML(
-        'beforeend',
-        '<div class="col-12 p-0 previewImageContainer mt-3" >' +
-        `<img src="https://bing.com/${dat.url}" class = "previewImage"><span class="tooltiptext tooltip-bottom">${dat.title}</span></div>`);
-    //debugger;
-    var lastChild = document.getElementById('sidePanel').lastChild;
+    let req = new XMLHttpRequest();
 
+    try {
+        req.addEventListener('load', () => {
+            listOfImages.push({
+                image: req
+            });
+            console.log(req);
+            console.log(listOfImages);
 
-    console.log();
-    console.log();
-    /*window.getComputedStyle(document.querySelector('#sidePanel').lastChild.lastChild, null)['width'] */
-    console.log(window.getComputedStyle(document.querySelector('#sidePanel').lastChild.lastChild, null)['width']);
-    var offset = (-parseInt(window.getComputedStyle(document.querySelector('#sidePanel').lastChild.lastChild, null)['width'])/2).toString();
-    lastChild.lastChild.style.marginLeft = offset;
-    console.log(offset);
-    console.log(document.querySelector('#sidePanel').lastChild.lastChild.style.marginLeft)
-    /*console.log(lastChild.firstChild.style.maxWidth);
-    console.log(lastChild.lastChild.style.maxWidth);*/
+            document.getElementById('sidePanel').insertAdjacentHTML(
+                'beforeend',
+                `<div class="col-12 p-0 previewImageContainer mt-3" > 
+                    <img src="${IMGBASE + dat.url}" class = "previewImage"> 
+                        <div class="tooltiptext tooltip-bottom">${dat.title} 
+                    </div> 
+                </div>`);
 
+        })
+    } catch (error) {
 
-    //lastChild.lastChild.style.marginLeft = -lastChild.offsetWidth / 2;
+    }
+
+    req.open('GET', IMGBASE + dat.url);
+    req.send();
 }
