@@ -1,5 +1,7 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require('electron')
+const electron = require('electron');
+const { app, BrowserWindow, ipcMain } = electron;
+const { windowWidth, windowHeight } = require('./js/constants');
 
 let win;
 
@@ -7,9 +9,16 @@ let data = new Object();
 
 function createWindow() {
     // Create the browser window.
+    const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize
+
+    console.log({
+        width: (windowWidth > width ? width : windowWidth),
+        height: (windowHeight > height ? height : windowHeight),
+    });
+
     win = new BrowserWindow({
-        width: 1600,
-        height: 900,
+        width: (windowWidth > width ? width : windowWidth),
+        height: (windowHeight > height ? height : windowHeight),
         resizable: false,
         autoHideMenuBar: true,
         webPreferences: {
@@ -37,11 +46,12 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
-
 app.on('ready', () => {
+
+    createWindow();
+
     console.log("app ready");
-    win.webContents.on('did-finish-load', () => {        
+    win.webContents.on('did-finish-load', () => {
         console.log("window ready");
         win.webContents.send('runFetchFunction');
     })
@@ -64,16 +74,3 @@ app.on('activate', function () {
     }
     //webFrame.setZoomFactor(1);  
 })
-
-function init_Data() {
-    data["scout"] = new Object();
-    data["soldier"] = new Object();
-    data["pyro"] = new Object();
-    data["demoman"] = new Object();
-    data["heavy"] = new Object();
-    data["engineer"] = new Object();
-    data["medic"] = new Object();
-    data["sniper"] = new Object();
-    data["spy"] = new Object();
-    data["general"] = new Object();
-}
