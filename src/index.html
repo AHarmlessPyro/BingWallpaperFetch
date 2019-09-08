@@ -11,11 +11,36 @@
 
         </div>
         <div class="col-9 mainPanel" id="mainPanel">
-
+            <div class='row-9 mt-3 p-0' id="selectedImagePane">
+                <img class="col-12 p-0" id="selectedImageViewer">
+            </div>
+            <div class='row-3 mt-3 p-0' id="infoBox">
+                <div class='col-2 p-0'>
+                    <input type="button" class='up' id="setWallpaper" value="Set Background">
+                </div>
+                <div class='col-10' id="infoSegment">
+                    <label id="title"></label>
+                    <!--<label for="title" id="titleLabel"></label>-->
+                    <label id="quizLink">
+                        <a id='linkForQuizLink' >
+                            Find this Quiz on Bing 
+                        </a>
+                    </label>
+                    <label for="description" id="descriptionLabel">Extra Info</label>
+                    <label id="description"></label>
+                    <label for="moreInfo" id="moreInfoLabel"> Interested in more?</label>
+                    <label id="moreInfo"></label>
+                </div>
+            </div>
+            <!--<div class="settingsPanel">
+                <div class="settingsButton">
+                    settings
+                </div>
+            </div>-->
         </div>
     </div>
     <script>
-        require('./renderer.js');
+        require('./js/renderer.js');
     </script>
 </body>
 

@@ -1,4 +1,4 @@
-#sidePanel {    
+#sidePanel {
     min-height: 100px;
     overflow-y: scroll;
     max-height: -webkit-fill-available;
@@ -42,7 +42,7 @@
 .previewImageContainer .tooltiptext {
     visibility: hidden;
     max-width: 75%;
-    background-color: rgba(171,205,239, 0.3);
+    background-color: rgba(171, 205, 239, 0.3);
     color: #fff;
     text-align: center;
     padding: 5px 0;
@@ -64,6 +64,81 @@
     visibility: visible;
 }
 
-/*::-webkit-scrollbar{
-    background-color: pink;
-}*/
+.settingsPanel {
+    text-orientation: upright;
+}
+
+.settingsButton {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    letter-spacing: -0.5em;
+}
+
+#selectedImagePane {
+    -webkit-animation: opacity 2s;
+    -o-animation: opacity 2s;
+    animation: opacity 2s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#infoBox {
+    display: none;
+}
+
+/*
+Button transition taken from 
+https://codepen.io/giana/pen/BZaGyP
+*/
+
+#setWallpaper {
+    background: none;
+    border: 2px solid;
+    color: white;
+    padding: 1em 2em;
+    color: var(--color);
+    transition: 0.25s;
+    font: inherit;
+    line-height: 1;
+    margin-top: 0.5em;
+    padding: 1em 2em;
+}
+
+.up:hover, .up:focus {
+    box-shadow: inset 0 -3.25em 0 0 var(--hover);
+}
+
+.up {
+    --color: white;
+    --hover: #94e458;
+}
+
+#setWallpaper:hover {
+    border-color: var(--hover);
+    color: #fff;
+}
+
+#infoSegment {
+    display: grid;
+}
+
+#quizLink {
+    color: rgb(6, 69, 173);
+    text-decoration: underline;
+}
