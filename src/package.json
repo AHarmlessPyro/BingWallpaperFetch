@@ -25,7 +25,7 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "electron": "^6.0.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mkdirp": "^0.5.1",
     "popper.js": "^1.15.0",
     "regedit": "^3.0.3",
